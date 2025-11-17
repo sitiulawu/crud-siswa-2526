@@ -7,6 +7,7 @@
   <title>Daftar siswa</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <div class="container">
     <h1>Daftar siswa</h1>
@@ -14,16 +15,24 @@
     <a href="tambah.html" class="button">tambah siswa</a>
     
     <table>
-         <thead>
-              <tr>
-                <th>NIS</th>
-                <th>Nama</th>
-                <th>Kelas</th>
-                <th>Aksi</th>
-              </tr>
-         </thead>
-         <tbody id="tabelData"><tbody>
+      <thead>
+        <tr>
+          <th>NIS</th>
+          <th>Nama</th>
+          <th>Kelas</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody id="tabelData">
+      <tbody>
     </table>
   </div>
+  <script type="module">
+    import { tampilkanDaftarSiswa } from './main.js'
+    
+    //ekskusi fungsi untuk menampilkan daftar siswa
+    tampilkanDaftarSiswa()
+  </script>
 </body>
+
 </html>
