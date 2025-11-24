@@ -11,8 +11,9 @@
 <a href="daftar.html">daftar.html</a>
 <body>
   <div cclass="container">
-  <h1>from tambah siswa</h1>
+  <h1>form tambah siswa</h1>
   
+  <form id='fromTambah'>
   <label>NIS</label>
   <input type="text" id="nis"/>
   
@@ -28,8 +29,24 @@
   
   <button type="tombolSimpan">simpan</button>
   </form>
-  
-  
+
   </div>
+  <script type="module">
+    import {tambahDataSiswa} from './main.js'
+    
+    //mengirimkan data siswa baru dari form
+    const formTambah = document.getElementById('fromTambah')
+    
+    //event ketika form disubmit (dikirim)
+    formTambah.addEventListener('submit', function (e) {
+      //mencegah reload halaman 
+      e.preventDefault()
+      
+      tambahDataSiswa()
+      
+      //eksekusi fungsi tambah data siswa
+      tambahDataSiswa()
+    })
+  </script>
 </body>
 </html>

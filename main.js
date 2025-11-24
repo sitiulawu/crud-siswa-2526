@@ -50,11 +50,11 @@ export async function tampilkanDaftarSiswa() {
     
     //buat elemen untuk nama
     const kolomNama = document.createElement("td")
-    kolomNama.textContent = data.kelas
+    kolomNama.textContent = data.nama
     
     //buat elemen kolom kelas
     const kolomKelas = document.createElement("td")
-    kolomKelas.textContent = data.kolomKelas
+    kolomKelas.textContent = data.kelas
     
     //buat elemen kolom untuk aksi
     const kolomAksi = document.createElement("td")
@@ -84,4 +84,22 @@ export async function tampilkanDaftarSiswa() {
     tabel.appendChild(baris)
   })
   
+}
+
+//fungsi untuk menambahkan data siswa
+export async function tambahDataSiswa() {
+  //ambil nilai dari from
+  const nis = document.getElementById('nis').value
+  const nama = document.getElementById('nama').value
+  const kelas = document.getElementById('kelas').value
+  
+  //tambahkan data ke firestore
+  await addDoc(siswaCollection, {
+    nis: nis,
+    nama: nama,
+    kelas: kelas
+  })
+  
+ //alihkan ke halaman daftar siswa
+ window.location.href = 'daftar.html'
 }
