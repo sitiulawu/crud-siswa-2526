@@ -4,11 +4,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>edit</title>
+  <title>ubah data siswa</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   
+  <div cclass="container">
+  <h1>form ubah siswa</h1>
+  
+  <form id='formUbah'>
+  <label>NIS</label>
+  <input type="text" id="nis"/>
+  
+  <label>nama</label>
+  <input type="text" id="nama"/>
+  
+  <label>kelas</label>
+  <select name="kelas" id="kelas">
+  <option value="X">X</option>
+  <option value="XI">XI</option>
+  <option value="XII">XII</option>
+  </select>
+  
+  <button type="tombolSimpan">simpan</button>
+  </form>
+  
+<a herf="daftar.html">Daftar Siswa</a>
+  </div>
+  
+  <script type="module">
+    import {ambilDataSiswa, ubahDataSiswa} from './main.js'
+    
+    
+    //mengambil id URL 
+    const urlParams = new URLSearchParams(window.location.search)
+    const idSiswa = urlParams.get('id')
+    
+    //mengisi form dengan data siswa yang diambil dari fristore
+    const siswa = await ambilDataSiswa(idSiswa)
+    
+    document.getElementById('nis').value = siswa.nis 
+    document.getElementById('nama').value = siswa.nama
+    
+    const formUbah = document.getElementById('formUbah')
+    
+    formUbah.addEventListener('submit', function (e) { 
+      //mencegah roload halaman 
+      e.preventDefault()
+      
+      const nis = document.getElementById('nis').value
+      const nama= document.getElementById('nama').value
+      const kelas = document.getElementById('kelas').value
+      
+          //eksekusi fungsi ubah data siswa
+    ubahDataSiswa(idSiswa,nis,nama,kelas)
+    })
+    </script>
 </body>
 
 </html>
